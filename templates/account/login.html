@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - www.codingnepalweb.com -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix Login Page</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+    <nav>
+        <a href="#"><img src="{% static 'img/logo.svg' %}" alt="logo"></a>
+    </nav>
+    <div class="hero__bg__image__container">
+        <img
+          src="https://assets.nflxext.com/ffe/siteui/vlv3/9c5457b8-9ab0-4a04-9fc1-e608d5670f1a/710d74e0-7158-408e-8d9b-23c219dee5df/IN-en-20210719-popsignuptwoweeks-perspective_alpha_website_small.jpg"
+          alt="BG hero image"
+          class="hero__bg__image"
+        />
+      </div>
+    <div class="form-wrapper">
+        <h2>Sign In</h2>
+        <form action="#" method="POST">
+            {% csrf_token %}
+            <div class=" text-center my-4">
+                {% if form.errors %}
+                <p class="text-primary_red ">
+                    {{form.non_field_errors}}
+                </p>
+                {% endif %}
+               
+            </div>
+            <div class="form-control">
+                <input type="email" name="login" id="id_login"  required>
+                <label>Email or phone number</label>
+            </div>
+            <div class="form-control">
+                <input type="password" name="password" id="id_password" required>
+                <label>Password</label>
+            </div>
+            <button type="submit">Sign In</button>
+            <div class="form-help"> 
+                <div class="remember-me">
+                    <input type="checkbox" id="remember-me">
+                    <label for="remember-me">Remember me</label>
+                </div>
+                <a href="#">Need help?</a>
+            </div>
+        
+        <p>New to Netflix? <a href="{% url 'account_signup' %}">Sign up now</a></p>
+    </form>
+        <small>
+            This page is protected by Google reCAPTCHA to ensure you're not a bot. 
+            <a href="#">Learn more.</a>
+        </small>
+    </div>
+</body>
+</html>

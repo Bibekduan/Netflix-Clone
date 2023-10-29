@@ -1,0 +1,50 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" integrity="sha512-BnbUDfEUfV0Slx6TunuB042k9tuKe3xr+d6q4mg5Ed72LTgzDIcLPxg6yI2gcMFRyomt+yJJxE+zJwNmxki6/RA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/addprofile.css' %}" />
+
+
+</head>
+<body>
+    <div class="whoIsWatching">
+        <div class="logo-section">
+            <a href="{% url 'Home' %}"><img src="{% static 'img/logo.png' %}" alt="logo"></a>
+        </div>
+        <div class="nav__item" id="sign-out-button">
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'account_logout' %}" style="text-decoration:none"  class="signin__button">Sign out</a>
+            {% else %}
+            <a href="{% url 'account_login' %}" style="text-decoration:none"  class="signin__button">Sign in</a>
+            {% endif %}
+          </div>
+        <div class="main-div">
+            <h1>Who's watching?</h1>
+            <div class="profiles-container">
+                {% for profile in profiles %}
+                <a href="{% url 'movie-list' profile_id=profile.uuid %}">
+                <div class="profile-item">
+                    <img src="{% static 'img/user2.png' %}" alt="{{ profile.name }} Profile Image" >
+                    <p>{{ profile.name }}</p>
+                </div>
+                </a>
+                {% endfor %}
+            </div>
+            {% comment %} <div class="flex justify-center items-center">
+                <a href="" class="px-4 py-1 rounded-d outline-none bg-gray-400 text-gray-100">
+                    Add A New Profile
+                </a>
+            </div> {% endcomment %}
+            <a href="{% url 'profile-creaet' %}"  style="text-decoration:none"  class="manageProfile">Create Profile</button>
+        </div>
+    </div>
+    <script src="{% static 'js/profile.js' %}"></script>
+</body>
+</html>
