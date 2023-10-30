@@ -30,17 +30,7 @@
       "SECRET_KEY": "django-insecure-47@(d1kvjpdq81$@z_6hloht=+gvwr)ql54a&we-41)ik_9wfz",
       "DEBUG": "false",
       "ALLOWED_HOSTS": ".vercel.app"
-    },
-    "functions": {
-      "api/*": {
-        "runtime": "python3.8",
-        "environment": {
-          "DJANGO_SETTINGS_MODULE": "Netflix.settings",
-          "SECRET_KEY": "django-insecure-47@(d1kvjpdq81$@z_6hloht=+gvwr)ql54a&we-41)ik_9wfz",
-          "DEBUG": "false",
-          "ALLOWED_HOSTS": ".vercel.app"
-        }
-      }
     }
+    
   }
   
